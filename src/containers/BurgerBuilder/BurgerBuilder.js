@@ -5,8 +5,8 @@ import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 
 const INGREDIENT_PRICES = {
     lettuce: 0.3,
-    cheese: 1,
-    meat: 1.5,
+    cheese: 0.75,
+    meat: 2,
     bacon: 1.5
 }
 class BurgerBuilder extends Component {
@@ -35,6 +35,7 @@ class BurgerBuilder extends Component {
 
     removeIngredientHandler = ( type ) => {
         const oldCount = this.state.ingredients[type];
+        // if the count is less than 1, disable the "less" button
         if (oldCount <= 0) {
             return;
         }
