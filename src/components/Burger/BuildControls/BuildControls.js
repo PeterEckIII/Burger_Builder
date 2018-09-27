@@ -10,7 +10,7 @@ const controls = [
 ];
 
 const BuildControls = props => {
-    console.log("BuildControlSSS props", props);
+    console.log("BuildControls props", props);
     return (
         <div className={classes.BuildControls}>
             <strong><p>Curren Price: ${props.price.toFixed(2)}</p></strong>
