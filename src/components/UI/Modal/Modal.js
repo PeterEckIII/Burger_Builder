@@ -7,7 +7,7 @@ class Modal extends Component {
 
     // Added the below methods because the Modal wraps the OrderSummary component, which was rendering unnecessarily, causing performance issues
     shouldComponentUpdate( nextProps, nextState ) {
-        if (nextProps.show !== this.props.show) {
+        if (nextProps.show !== this.props.show || nextProps.children !== this.props.children) {
             return true;
         }
     }
