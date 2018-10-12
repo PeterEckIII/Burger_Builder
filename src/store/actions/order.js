@@ -18,7 +18,7 @@ export const purchasBurgerFail = ( error ) => {
 
 export const purchaseBurgerStart = () => {
     return {
-        tyoe: actionTypes.PURCHASE_BURGER_START
+        type: actionTypes.PURCHASE_BURGER_START
     };
 };
 
