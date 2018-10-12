@@ -4,7 +4,8 @@ import classes from "./Input.css";
 const Input = ( props ) =>  {
     let inputElement = null;
     const inputClasses = [classes.InputElement];
-
+    
+    // Props here are coming from the Contact Data component
     if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid);
     }
@@ -30,14 +31,15 @@ const Input = ( props ) =>  {
             break;
         default:
             inputElement = <input className={classes.InputElement} {...props.elementConfig} value={props.value} />
-
     }
+
+    // Where is props.label coming from? console.log returns undefined...
     return (
         <div className={classes.Input}>
             <label className={classes.Label}>{props.label}</label>
             {inputElement}
         </div>
-    )
-}
+    );
+};
 
 export default Input;

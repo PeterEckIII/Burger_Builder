@@ -21,6 +21,8 @@ class BurgerBuilder extends Component {
     }
 
     updatePurchaseState (ingredients) {
+        // Object.keys returns the keys from the ingredients object
+        // We map the keys to a new array using each individual ingredient (igKey)
         const sum = Object.keys(ingredients).map(igKey => {
             return ingredients[igKey];
         }).reduce((acc, next) => {
@@ -29,34 +31,45 @@ class BurgerBuilder extends Component {
         return sum > 0;
     }
 
+    // When user clicks on "Place Your Order"
     purchaseHandler = () => {
+        console.log("From the purchaseHandler");
         this.setState({ purchasing: true });
     }
 
+    // On modal when user clicks "Cancel"
     purchaseCancelHandler = () => {
+        console.log("From the purchaseCancelHandler");
         this.setState({ purchasing: false });
     }
 
+    // On modal when user clicks "Continue"
     purchaseContinueHandler = () => {
+        console.log("From the purchaseContinueHandler");
         this.props.history.push('/checkout');
     }
 
+    // TODO: Figure out what's going on with this disabledInfo variable...
     render() {
 
         const disabledInfo = {
             ...this.props.ings
         };
+        console.log("Disabled info is:", disabledInfo);
         
+        // Each key here is the ingredient name
         for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0;
         }
 
         let orderSummary = null 
 
+        // If the data is loading show the Spinner component
         if (this.state.loading) {
             orderSummary = <Spinner />
         }
 
+        // If there is an error show the error text. If not, load the Spinner component
         let burger = this.props.error ? <p>Ingredients can't be loaded!</p> : <Spinner />
 
         if (this.props.ings) {
@@ -82,7 +95,9 @@ class BurgerBuilder extends Component {
 
         return (
             <Aux>
-                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
+                <Modal 
+                    show={this.state.purchasing}
+                    modalClosed={this.purchaseCancelHandler}>
                     {orderSummary}
                 </Modal>
                 {burger}

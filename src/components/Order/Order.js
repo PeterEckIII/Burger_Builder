@@ -12,8 +12,7 @@ const Order = ( props ) => {
             }
         )
     }
-    console.log(ingredients);
-
+    
     const ingredientOutput = ingredients.map(ig => {
         return (
             <span 

@@ -7,8 +7,9 @@ class OrderSummary extends Component {
     
     // This could be a functional component, just keeping this here for reference and debugging
     componentWillUpdate() {
-        console.log("Order Summary will update");
+
     }
+    
     render () {
         const ingredientSummary = Object.keys(this.props.ingredients).map(igKey => {
             return <li key={igKey}>
